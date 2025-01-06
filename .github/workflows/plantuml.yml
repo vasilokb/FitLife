@@ -32,6 +32,7 @@ jobs:
       run: |
         mkdir -p output
         for file in $(find diagrams -name '*.puml'); do
+          echo "Generating diagram for $file"
           java -jar plantuml.jar -tpng $file -o output
         done
 
@@ -39,6 +40,7 @@ jobs:
       run: ls -l output
 
     - name: Commit and push diagrams
+      if: success()
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
