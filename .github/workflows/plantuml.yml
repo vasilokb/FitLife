@@ -1,4 +1,4 @@
-name: PlantUML Diagrams
+name: Generate PlantUML Diagrams
 
 on:
   push:
@@ -19,23 +19,31 @@ jobs:
     - name: Set up Java
       uses: actions/setup-java@v2
       with:
+        distribution: 'adopt'  # или можно использовать 'zulu' или 'temurin'
         java-version: '11'
 
-    - name: Install PlantUML
-      run: sudo apt-get install plantuml
+    - name: Download PlantUML
+      run: wget http://sourceforge.net/projects/plantuml/files/plantuml.jar/download -O plantuml.jar
 
-    - name: Generate Diagrams
-      run: |
-        plantuml diagrams/context/*.puml
-        plantuml diagrams/container/*.puml
-        plantuml diagrams/component/*.puml
-        plantuml diagrams/code/*.puml
+    - name: List .puml files
+      run: find diagrams -name '*.puml'
 
-    - name: Commit Diagrams
+    - name: Generate diagrams
       run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add diagrams/**/*.png
-        git commit -m "Automated diagram generation"
-        git push origin main
-      if: success()
+        mkdir -p output
+        for file in $(find diagrams -name '*.puml'); do
+          java -jar plantuml.jar -tpng $file -o output
+        done
+
+    - name: List generated diagrams
+      run: ls -l output
+
+    - name: Commit and push diagrams
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        git add output/*
+        git commit -m 'Generate PlantUML diagrams'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
