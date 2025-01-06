@@ -1,0 +1,27 @@
+@startuml
+!include https://raw.githubusercontent.com/vasilokb/plantUML/refs/heads/main/C4.puml
+
+
+
+
+Boundary(system, "Web applicaion") {
+Component(PaymentController, "PaymentController", "Обрабатывает платежи", , , , )
+Component(ScheduleController, "ScheduleController", "Управляет расписанием тренировок", , , , )
+Component(UserController, "UserController", "Управляет пользователями", , , , )
+Component(AuthController, "AuthController", "Аутентификация и авторизация", , , , )
+Component(ServiceLayer, "ServiceLayer", "Слой бизнес-логики", , , , )
+Component(DataLayer, "DataLayer", "Слой доступа к базе данных", , , , )
+Rel( PaymentController, ServiceLayer, )
+Rel( ScheduleController, ServiceLayer, )
+Rel( UserController, ServiceLayer, )
+Rel( AuthController, ServiceLayer, )
+Rel( ServiceLayer, DataLayer, )
+}
+
+
+ContainerDb(db, "DataBase", "Хранит данные", , , , "PostgreSQL")
+Rel( DataLayer, db, )
+
+
+
+@enduml
