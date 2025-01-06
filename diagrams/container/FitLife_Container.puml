@@ -9,7 +9,7 @@ Boundary(system, "FitLife System") {
 Container(WAP, "Web applicaion", " платежей.", , , , "Java, Spring")
 ContainerDb(db, "DataBase", "Хранит данные", , , , "PostgreSQL")
 Rel(WAP, db, "")
-Container(PaymentService, "Payment Service", "Обрабатывет платежи", , , , "Node.js")
+Container(PaymentService, "Payment Service", "Обрабатывет платежи вот так", , , , "Node.js")
 Rel(WAP, PaymentService, "Выполнение платежей")
 Container(MobileApplication, "Mobile Application", "Позволяет пользователям управлять их членством", , , , "Kotlin, Swift")
 Rel(MobileApplication, db, "")

@@ -10,7 +10,7 @@ System(fitlife, "FitLife System", "система, которая управля
 System_Ext(api, "Third-Party API", "внешний API для интеграции данных о фитнесе")
 System_Ext(bank, "Bank System", "внешняя банковская система для обработки платежей")
 Rel(user, fitlife, "Использует приложение")
-Rel(admin, fitlife, "Администрирует приложение")
+Rel(admin, fitlife, "Администрирует приложение вот так")
 Rel(fitlife, api, "Потребляет фитнесс данные")
 Rel(fitlife, bank, "Выполнение платежей")
 

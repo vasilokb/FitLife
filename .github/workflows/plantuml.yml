@@ -26,7 +26,9 @@ jobs:
       run: wget http://sourceforge.net/projects/plantuml/files/plantuml.jar/download -O plantuml.jar
 
     - name: List .puml files
-      run: find diagrams -name '*.puml'
+      run: |
+        echo "Listing .puml files in diagrams directory:"
+        find diagrams -name '*.puml'
 
     - name: Generate diagrams
       run: |
@@ -37,7 +39,9 @@ jobs:
         done
 
     - name: List generated diagrams
-      run: ls -l output
+      run: |
+        echo "Listing files in output directory:"
+        ls -l output
 
     - name: Commit and push diagrams
       if: success()

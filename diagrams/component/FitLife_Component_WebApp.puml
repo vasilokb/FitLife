@@ -5,7 +5,7 @@
 
 
 Boundary(system, "Web applicaion") {
-Component(PaymentController, "PaymentController", "Обрабатывает платежи", , , , )
+Component(PaymentController, "PaymentController", "Обрабатывает платежи вот так", , , , )
 Component(ScheduleController, "ScheduleController", "Управляет расписанием тренировок", , , , )
 Component(UserController, "UserController", "Управляет пользователями", , , , )
 Component(AuthController, "AuthController", "Аутентификация и авторизация", , , , )
