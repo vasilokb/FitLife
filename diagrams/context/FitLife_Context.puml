@@ -1,6 +1,6 @@
 @startuml
 
-!include !include diagrams/includes/C4_Context.puml
+!include https://raw.githubusercontent.com/vasilokb/plantUML/refs/heads/main/C4.puml
 
 Person(user, "Пользователь", "Пользователь системы фитнес-клуба")
 Person(admin, "Администратор", "Администратор, управляющий системой и осуществляющий поддержку пользователей")
