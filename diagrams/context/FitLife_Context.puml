@@ -1,6 +1,6 @@
 @startuml
 
-!include ./diagrams/includes/Context.puml
+!include !include diagrams/includes/C4_Context.puml
 
 Person(user, "Пользователь", "Пользователь системы фитнес-клуба")
 Person(admin, "Администратор", "Администратор, управляющий системой и осуществляющий поддержку пользователей")
